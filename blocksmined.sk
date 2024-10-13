@@ -1,0 +1,19 @@
+## Blocks Mined Command / Brakets
+
+on break: ## Checks if player broke a block
+    if player's gamemode is not creative:   ## Checks if player is in creative
+        add 1 to {blocks-mined::%player's uuid%} ## Adds a block to the player's blocks mined
+        set event-block to air ## Sets the block they broke to air
+        give drops of event-block useing player's tool to player ## Gives them the block
+        cancel drops ## Cancels block drops
+
+
+
+
+command /blocks-mined:
+    cooldown: 3 seconds
+    trigger:
+        send "&9⛏ Mined Blocks:&f %{blocks-mined::%player's uuid}%"
+
+on chat:
+    replace first [Mined] with "&9⛏ %{blocks-mined::%player's uuid}%"
